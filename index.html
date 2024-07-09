@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<!-- saved from url=(0119)file:///D:/user%20data/Documents/%E2%80%8F%E2%80%8F%D7%AA%D7%99%D7%A7%D7%99%D7%94%20%D7%97%D7%93%D7%A9%D7%94/index.html -->
+<html lang="he" dir="rtl"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>תרגולית - מרכז רב תחומי לתרגול קבוצתי</title>
+    <script src="./index_files/gsap.min.js.הורדה"></script>
+    <link href="./index_files/css2" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4A90E2;
+            --secondary-color: #50E3C2;
+            --text-color: #333;
+            --background-color: #F5F7FA;
+        }
+
+        body {
+            font-family: 'Heebo', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        .logo {
+            max-width: 150px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-color);
+        }
+
+        .service-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .service-content {
+            padding: 20px;
+        }
+
+        .contact-form {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .faq-item {
+            background-color: white;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 15px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .faq-answer {
+            padding: 0 15px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+
+        .lang-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .shape {
+            position: fixed;
+            z-index: -1;
+            opacity: 0.5;
+        }
+
+        #shape1 {
+            top: 20%;
+            left: 5%;
+            width: 100px;
+            height: 100px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+        }
+
+        #shape2 {
+            top: 60%;
+            right: 10%;
+            width: 150px;
+            height: 150px;
+            background-color: var(--secondary-color);
+            transform: rotate(45deg);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+<style id="__web-inspector-hide-shortcut-style__">
+.__web-inspector-hide-shortcut__, .__web-inspector-hide-shortcut__ *, .__web-inspector-hidebefore-shortcut__::before, .__web-inspector-hideafter-shortcut__::after
+{
+    visibility: hidden !important;
+}
+</style></head>
+<body>
+    <div class="lang-toggle">
+        <button onclick="toggleLanguage()">
+            <span class="lang-he">English</span>
+            <span class="lang-en">עברית</span>
+        </button>
+    </div>
+
+    <div class="container">
+        <header>
+            <img src="./index_files/logo.jpg" alt="תרגולית לוגו" class="logo">
+            <h1 class="lang-he">תרגולית - מרכז רב תחומי לתרגול קבוצתי</h1>
+            <h1 class="lang-en">Tirguleet - Multidisciplinary Center for Group Practice</h1>
+        </header>
+
+        <section class="description">
+            <h2 class="lang-he">אודות המרכז</h2>
+            <h2 class="lang-en">About the Center</h2>
+            <p class="lang-he">
+                תרגולית הוא מרכז מתקדם המשלב ארבעה תחומי טיפול מובילים: ריפוי בעיסוק, קלינאות תקשורת, ספורט טיפולי ותרפיה בחיות. אנו מציעים גישה ייחודית המשלבת טיפול פרטני עם תרגול קבוצתי, המאפשרת לילדים ליהנות מיתרונות שני העולמות. צוות המומחים שלנו מתאים תכנית אישית לכל ילד, תוך שימוש בשיטות טיפול חדשניות ומוכחות מחקרית.
+            </p>
+            <p class="lang-en">
+                Tirguleet is an advanced center combining four leading treatment areas: occupational therapy, speech therapy, therapeutic sports, and animal therapy. We offer a unique approach that integrates individual treatment with group practice, allowing children to enjoy the benefits of both worlds. Our team of experts tailors a personalized program for each child, using innovative and research-proven treatment methods.
+            </p>
+        </section>
+
+        <se html="" body="" section[1]ction="" class="services">
+            
+            
+            
+            <section class="services">
+        <h2 class="lang-he">השירותים שלנו</h2>
+        <h2 class="lang-en">Our Services</h2>
+        
+        <!-- Occupational Therapy -->
+        <div class="service-card">
+            <img src="./index_files/1.jpg" alt="ריפוי בעיסוק" class="service-image">
+            <div class="service-content">
+                <h3 class="lang-he">ריפוי בעיסוק</h3>
+                <h3 class="lang-en">Occupational Therapy</h3>
+                <p class="lang-he">
+                    ריפוי בעיסוק בתרגולית מתמקד בשיפור מיומנויות מוטוריות, קוגניטיביות וחברתיות הנחוצות לתפקוד יומיומי. אנו משתמשים בשיטות טיפול חדשניות ומשחקיות, המותאמות אישית לכל ילד. הטיפול מסייע בשיפור הכתיבה, הריכוז, הקואורדינציה ומיומנויות חברתיות, תוך חיזוק הביטחון העצמי והעצמאות של הילד.
+                </p>
+                <p class="lang-en">
+                    Occupational therapy at Tirguleet focuses on improving motor, cognitive, and social skills necessary for daily functioning. We use innovative and playful treatment methods, tailored to each child. The therapy helps improve writing, concentration, coordination, and social skills, while strengthening the child's self-confidence and independence.
+                </p>
+            </div>
+        </div>
+
+        <!-- Speech Therapy -->
+        <div class="service-card">
+            <img src="./index_files/2.jpg" alt="קלינאות תקשורת" class="service-image">
+            <div class="service-content">
+                <h3 class="lang-he">קלינאות תקשורת</h3>
+                <h3 class="lang-en">Speech Therapy</h3>
+                <p class="lang-he">
+                    קלינאות התקשורת בתרגולית מתמקדת בשיפור יכולות השפה, הדיבור והתקשורת של הילד. הטיפול שלנו מותאם אישית לצרכיו הייחודיים של כל ילד, ומשלב טכניקות מתקדמות עם משחקים ופעילויות מהנות. אנו עובדים על שיפור ההגייה, העשרת אוצר המילים, הבנת שפה ומיומנויות תקשורת חברתית, תוך שימת דגש על בניית ביטחון בתקשורת.
+                </p>
+                <p class="lang-en">
+                    Speech therapy at Tirguleet focuses on improving the child's language, speech, and communication abilities. Our treatment is tailored to each child's unique needs, combining advanced techniques with fun games and activities. We work on improving pronunciation, enriching vocabulary, language comprehension, and social communication skills, while emphasizing the development of confidence in communication.
+                </p>
+            </div>
+        </div>
+
+        <!-- Therapeutic Sports -->
+        <div class="service-card">
+            <img src="./index_files/4.jpg" alt="ספורט טיפולי" class="service-image">
+            <div class="service-content">
+                <h3 class="lang-he">ספורט טיפולי</h3>
+                <h3 class="lang-en">Therapeutic Sports</h3>
+                <p class="lang-he">
+                    הספורט הטיפולי בתרגולית משלב פעילות גופנית עם עקרונות טיפוליים, במטרה לשפר את הבריאות הגופנית והנפשית של הילד. התוכנית שלנו מותאמת אישית ליכולות ולצרכים של כל ילד, ומשלבת מגוון פעילויות ספורטיביות מהנות. אנו מתמקדים בשיפור הקואורדינציה, שיווי המשקל, הכוח והסיבולת, תוך חיזוק הביטחון העצמי והמסוגלות החברתית.
+                </p>
+                <p class="lang-en">
+                    Therapeutic sports at Tirguleet combines physical activity with therapeutic principles to improve the child's physical and mental health. Our program is tailored to each child's abilities and needs, incorporating a variety of enjoyable sports activities. We focus on improving coordination, balance, strength, and endurance, while boosting self-confidence and social competence.
+                </p>
+            </div>
+        </div>
+
+        <!-- Animal Therapy -->
+        <div class="service-card">
+            <img src="./index_files/5.jpg" alt="תרפיה בחיות" class="service-image">
+            <div class="service-content">
+                <h3 class="lang-he">תרפיה בחיות</h3>
+                <h3 class="lang-en">Animal Therapy</h3>
+                <p class="lang-he">
+                    התרפיה בחיות בתרגולית מציעה גישה ייחודית לטיפול, המשתמשת באינטראקציה עם בעלי חיים כדי לקדם את ההתפתחות הרגשית והחברתית של הילד. הטיפול שלנו מתבצע בסביבה בטוחה ומבוקרת, עם מגוון בעלי חיים מאומנים. אנו מתמקדים בפיתוח אמפתיה, שיפור מיומנויות תקשורת, הפחתת חרדה וחיזוק הביטחון העצמי, תוך יצירת חוויות חיוביות ומעצימות עם בעלי החיים.
+                </p>
+                <p class="lang-en">
+                    Animal therapy at Tirguleet offers a unique approach to treatment, using interaction with animals to promote the child's emotional and social development. Our therapy is conducted in a safe and controlled environment with a variety of trained animals. We focus on developing empathy, improving communication skills, reducing anxiety, and boosting self-confidence, while creating positive and empowering experiences with animals.
+                </p>
+            </div>
+        </div>
+    </section>
+        </se>
+
+        <section class="contact-form">
+            <h2 class="lang-he">לפרטים נוספים וקבלת טופס הרשמה</h2>
+            <h2 class="lang-en">For More Details and Registration Form</h2>
+            <form id="contact-form" action="https://formsubmit.co/m.tirgulit@gmail.com" method="POST">
+                <input type="text" name="name" required="" placeholder="שם / Name">
+                <input type="email" name="email" required="" placeholder="אימייל / Email">
+                <input type="tel" name="phone" required="" placeholder="טלפון / Phone">
+                <button type="submit">
+                    <span class="lang-he">שלח</span>
+                    <span class="lang-en">Send</span>
+                </button>
+            </form>
+        </section>
+
+        <section class="faq">
+            
+            
+            
+            <section class="faq">
+        <h2 class="lang-he">שאלות נפוצות</h2>
+        <h2 class="lang-en">Frequently Asked Questions</h2>
+        
+        <!-- Existing FAQ item -->
+        <div class="faq-item">
+            <div class="faq-question">
+                <span class="lang-he">למי מיועד המרכז?</span>
+                <span class="lang-en">Who is the center for?</span>
+            </div>
+            <div class="faq-answer">
+                <span class="lang-he">המרכז מיועד לילדים שטופלו או מטופלים באחד המקצועות הפרא רפואיים וצריכים תרגול נוסף, או להורים המעוניינים לחזק אצל ילדיהם את תחומי ההתמחות של המכון.</span>
+                <span class="lang-en">The center is designed for children who have been or are being treated in one of the paramedical professions and need additional practice, or for parents who want to strengthen their children in the institute's areas of expertise.</span>
+            </div>
+        </div>
+        
+        <!-- New FAQ item 1 -->
+        <div class="faq-item">
+            <div class="faq-question">
+                <span class="lang-he">כיצד מתבצע תהליך ההרשמה והאבחון הראשוני?</span>
+                <span class="lang-en">How does the registration and initial assessment process work?</span>
+            </div>
+            <div class="faq-answer">
+                <span class="lang-he">תהליך ההרשמה מתחיל בפנייה ראשונית דרך טופס יצירת הקשר באתר או בשיחת טלפון. לאחר מכן, נקבעת פגישת אבחון ראשונית עם אחד המומחים שלנו. במהלך הפגישה, נעריך את צרכי הילד ונבנה תוכנית טיפול מותאמת אישית. ההורים מקבלים הסבר מפורט על התוכנית המוצעת ומשתתפים בקביעת היעדים הטיפוליים.</span>
+                <span class="lang-en">The registration process begins with an initial inquiry through the contact form on the website or by phone. Then, an initial assessment meeting is scheduled with one of our experts. During the meeting, we assess the child's needs and develop a personalized treatment plan. Parents receive a detailed explanation of the proposed program and participate in setting therapeutic goals.</span>
+            </div>
+        </div>
+        
+        <!-- New FAQ item 2 -->
+        <div class="faq-item __web-inspector-hide-shortcut__">
+            <div class="faq-question">
+                <span class="lang-he">האם הטיפולים מכוסים על ידי קופות החולים או ביטוחים פרטיים?</span>
+                <span class="lang-en">Are treatments covered by health insurance or private insurance?</span>
+            </div>
+            <div class="faq-answer">
+                <span class="lang-he">חלק מהטיפולים שלנו עשויים להיות מכוסים על ידי קופות החולים או ביטוחים פרטיים, בהתאם לתנאי הפוליסה האישית. אנו ממליצים לבדוק את הזכאות מול קופת החולים או חברת הביטוח שלכם. צוות המשרד שלנו ישמח לסייע בהגשת המסמכים הנדרשים לקבלת ההחזרים, במידה וקיימת זכאות.</span>
+                <span class="lang-en">Some of our treatments may be covered by health insurance or private insurance, depending on the terms of the individual policy. We recommend checking eligibility with your health fund or insurance company. Our office staff will be happy to assist in submitting the necessary documents for reimbursement, if eligibility exists.</span>
+            </div>
+        </div>
+    </section>
+        </section>
+    </div>
+
+    <div class="shape" id="shape1" style="transform: translate3d(42.385px, 25.431px, 0px) rotate(233.764deg) scale(0.99999, 0.99999);"></div>
+    <div class="shape" id="shape2" style="transform: translate3d(-94.7194px, -67.6566px, 0px) rotate(-336.387deg);"></div>
+
+    <script>
+        gsap.to("#shape1", {duration: 10, x: "+=50", y: "+=30", rotation: 360, repeat: -1, yoyo: true, ease: "none"});
+        gsap.to("#shape2", {duration: 15, x: "-=70", y: "-=50", rotation: -360, repeat: -1, yoyo: true, ease: "none"});
+
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                question.parentElement.classList.toggle('active');
+            });
+        });
+
+        function toggleLanguage() {
+            document.body.classList.toggle('lang-en');
+            document.documentElement.lang = document.body.classList.contains('lang-en') ? 'en' : 'he';
+            document.documentElement.dir = document.body.classList.contains('lang-en') ? 'ltr' : 'rtl';
+        }
+    </script>
+
+
+</body></html>
