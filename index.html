@@ -1,351 +1,431 @@
-<!DOCTYPE html>
-<!-- saved from url=(0119)file:///D:/user%20data/Documents/%E2%80%8F%E2%80%8F%D7%AA%D7%99%D7%A7%D7%99%D7%94%20%D7%97%D7%93%D7%A9%D7%94/index.html -->
-<html lang="he" dir="rtl"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<!-- saved from url=(0049)file:///C:/Users/user/Desktop/tirgulit/index.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>תרגולית - מרכז רב תחומי לתרגול בירושלים</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700&display=swap');
     
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>תרגולית - מרכז רב תחומי לתרגול קבוצתי</title>
-    <script src="./index_files/gsap.min.js.הורדה"></script>
-    <link href="./index_files/css2" rel="stylesheet">
-    <style>
-        :root {
-            --primary-color: #4A90E2;
-            --secondary-color: #50E3C2;
-            --text-color: #333;
-            --background-color: #F5F7FA;
+    :root {
+        --primary-color: #3498db;
+        --secondary-color: #f1c40f;
+        --background-color: #f0f4f8;
+        --text-color: #333;
+    }
+    
+    body {
+        font-family: 'Heebo', sans-serif;
+        line-height: 1.6;
+        color: var(--text-color);
+        margin: 0;
+        padding: 0;
+        direction: rtl;
+        background-color: var(--background-color);
+        overflow-x: hidden;
+    }
+    
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    
+    h1, h2 {
+        color: var(--primary-color);
+        text-align: center;
+    }
+    
+    .logo {
+        text-align: center;
+        margin-bottom: 30px;
+        animation: float 3s ease-in-out infinite;
+    }
+    
+    .logo img {
+        width: 200px;
+        height: auto;
+    }
+    
+    .highlight {
+        background-color: var(--secondary-color);
+        padding: 2px 5px;
+        border-radius: 3px;
+    }
+    
+    .cta-button {
+        display: inline-block;
+        background-color: var(--primary-color);
+        color: white;
+        padding: 15px 30px;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: bold;
+        margin-top: 20px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    
+    .cta-button:hover {
+        background-color: #2980b9;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+    }
+    
+    .service-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        margin-top: 50px;
+    }
+    
+    .service-box {
+        background-color: white;
+        border-radius: 15px;
+        padding: 30px;
+        text-align: center;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+        cursor: pointer;
+        overflow: hidden;
+        position: relative;
+    }
+    
+    .service-box:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    }
+    
+    .service-icon {
+        font-size: 3em;
+        margin-bottom: 20px;
+        transition: all 0.3s ease;
+    }
+    
+    .service-box:hover .service-icon {
+        transform: scale(1.2);
+    }
+    
+    .service-details {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease;
+    }
+    
+    .service-image {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+    
+    .parallax-section {
+        background: linear-gradient(45deg, #3498db, #f1c40f);
+        height: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-align: center;
+        margin: 50px 0;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .parallax-content {
+        background-color: rgba(255,255,255,0.2);
+        padding: 30px;
+        border-radius: 15px;
+        z-index: 2;
+    }
+    
+    .parallax-bubbles {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: 1;
+    }
+    
+    .bubble {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.1);
+        animation: float-bubble 4s infinite;
+    }
+    
+    .faq-section {
+        margin-top: 50px;
+    }
+    
+    .faq-item {
+        background-color: white;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .faq-question {
+        font-weight: bold;
+        cursor: pointer;
+    }
+    
+    .faq-answer {
+        display: none;
+        margin-top: 10px;
+    }
+    
+    @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+        100% { transform: translateY(0px); }
+    }
+    
+    @keyframes float-bubble {
+        0%, 100% { transform: translateY(0) rotate(0deg); }
+        50% { transform: translateY(-20px) rotate(180deg); }
+    }
+    
+    .intro-animation {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--primary-color);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+    }
+    
+    .intro-text {
+        font-size: 3em;
+        color: white;
+        opacity: 0;
+    }
+    
+    @media (max-width: 768px) {
+        .service-grid {
+            grid-template-columns: 1fr;
         }
-
-        body {
-            font-family: 'Heebo', sans-serif;
-            background-color: var(--background-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        header {
-            text-align: center;
-            padding: 40px 0;
-        }
-
-        .logo {
-            max-width: 150px;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-
-        h1, h2, h3 {
-            color: var(--primary-color);
-        }
-
-        .service-card {
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
-            overflow: hidden;
-            transition: transform 0.3s ease;
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .service-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .service-content {
-            padding: 20px;
-        }
-
-        .contact-form {
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            padding: 20px;
-            margin-top: 40px;
-        }
-
-        input, textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-
-        button {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        button:hover {
-            background-color: var(--secondary-color);
-        }
-
-        .faq-item {
-            background-color: white;
-            border-radius: 8px;
-            margin-bottom: 10px;
-            overflow: hidden;
-        }
-
-        .faq-question {
-            padding: 15px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        .faq-answer {
-            padding: 0 15px;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
-
-        .faq-item.active .faq-answer {
-            max-height: 500px;
-        }
-
-        .lang-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-        }
-
-        .shape {
-            position: fixed;
-            z-index: -1;
-            opacity: 0.5;
-        }
-
-        #shape1 {
-            top: 20%;
-            left: 5%;
-            width: 100px;
-            height: 100px;
-            background-color: var(--primary-color);
-            border-radius: 50%;
-        }
-
-        #shape2 {
-            top: 60%;
-            right: 10%;
-            width: 150px;
-            height: 150px;
-            background-color: var(--secondary-color);
-            transform: rotate(45deg);
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 10px;
-            }
-        }
-    </style>
-<style id="__web-inspector-hide-shortcut-style__">
-.__web-inspector-hide-shortcut__, .__web-inspector-hide-shortcut__ *, .__web-inspector-hidebefore-shortcut__::before, .__web-inspector-hideafter-shortcut__::after
-{
-    visibility: hidden !important;
-}
+    }
 </style>
-<link rel="stylesheet" href="./index_files/modern-neon-styles.css"></head>
-<body>
-    <div class="lang-toggle">
-        <button onclick="toggleLanguage()">
-            <span class="lang-he">English</span>
-            <span class="lang-en">עברית</span>
-        </button>
+
+<meta name="NetsparkQuiltingResult" total-length="16499" removed="0" rules-found="w3481,w3055,w2623,w6173,w6174,w16102,w26412,w26609,w19130,w11454,w11455,w6412,w18783,w26825,w1515,w26608,w26738">
+</head>
+<body style="background-color: rgb(240, 244, 248); transition: background-color 10s ease 0s;">
+<div class="intro-animation" style="opacity: 0; transition: opacity 1s ease 0s; display: none;">
+    <div class="intro-text" style="opacity: 1; transition: opacity 1s ease 0s;">ברוכים הבאים לתרגולית</div>
+</div>
+
+<div class="container">
+    <div class="logo">
+        <img src="./index_files/logo.png" alt="לוגו תרגולית" width="200" height="100">
     </div>
 
-    <div class="container">
-        <header>
-            <img src="./index_files/logo.jpg" alt="תרגולית לוגו" class="logo">
-            <h1 class="lang-he">תרגולית - מרכז רב תחומי לתרגול קבוצתי</h1>
-            <h1 class="lang-en">Tirguleet - Multidisciplinary Center for Group Practice</h1>
-        </header>
+    <h1>ברוכים הבאים לתרגולית</h1>
+    <h2>המרכז הרב תחומי לתרגול בירושלים</h2>
 
-        <section class="description">
-            <h2 class="lang-he">אודות המרכז</h2>
-            <h2 class="lang-en">About the Center</h2>
-            <p class="lang-he">
-                תרגולית הוא מרכז מתקדם המשלב ארבעה תחומי טיפול מובילים: ריפוי בעיסוק, קלינאות תקשורת, ספורט טיפולי ותרפיה בחיות. אנו מציעים גישה ייחודית המשלבת טיפול פרטני עם תרגול קבוצתי, המאפשרת לילדים ליהנות מיתרונות שני העולמות. צוות המומחים שלנו מתאים תכנית אישית לכל ילד, תוך שימוש בשיטות טיפול חדשניות ומוכחות מחקרית.
-            </p>
-            <p class="lang-en">
-                Tirguleet is an advanced center combining four leading treatment areas: occupational therapy, speech therapy, therapeutic sports, and animal therapy. We offer a unique approach that integrates individual treatment with group practice, allowing children to enjoy the benefits of both worlds. Our team of experts tailors a personalized program for each child, using innovative and research-proven treatment methods.
-            </p>
-        </section>
+    <p><span class="highlight">נמאס לכם לחכות בתור? למלא טפסים? הילד שלכם זקוק לתרגול נוסף?</span> תרגולית היא הפתרון עבורכם!</p>
 
-        <se html="" body="" section[1]ction="" class="services">
-            
-            
-            
-            <section class="services">
-        <h2 class="lang-he">השירותים שלנו</h2>
-        <h2 class="lang-en">Our Services</h2>
-        
-        <!-- Occupational Therapy -->
-        <div class="service-card">
-            <img src="./index_files/1.jpg" alt="ריפוי בעיסוק" class="service-image">
-            <div class="service-content">
-                <h3 class="lang-he">ריפוי בעיסוק</h3>
-                <h3 class="lang-en">Occupational Therapy</h3>
-                <p class="lang-he">
-                    ריפוי בעיסוק בתרגולית מתמקד בשיפור מיומנויות מוטוריות, קוגניטיביות וחברתיות הנחוצות לתפקוד יומיומי. אנו משתמשים בשיטות טיפול חדשניות ומשחקיות, המותאמות אישית לכל ילד. הטיפול מסייע בשיפור הכתיבה, הריכוז, הקואורדינציה ומיומנויות חברתיות, תוך חיזוק הביטחון העצמי והעצמאות של הילד.
-                </p>
-                <p class="lang-en">
-                    Occupational therapy at Tirguleet focuses on improving motor, cognitive, and social skills necessary for daily functioning. We use innovative and playful treatment methods, tailored to each child. The therapy helps improve writing, concentration, coordination, and social skills, while strengthening the child's self-confidence and independence.
-                </p>
+    <p>בתרגולית, אנו מאמינים שכל ילד ראוי לקבל את התמיכה והכלים הנדרשים להצלחה. המרכז שלנו מציע מגוון רחב של שירותים מקצועיים, המותאמים אישית לצרכים הייחודיים של כל ילד. אצלנו, הילדים לא רק מקבלים טיפול - הם חווים הצלחות, בונים ביטחון עצמי ומגלים את הפוטנציאל האמיתי שלהם.</p>
+
+    <div class="service-grid">
+        <div class="service-box" onclick="toggleDetails(&#39;ot&#39;)" style="opacity: 1; transform: translateY(0px); transition: opacity 1s ease 0s, transform 1s ease 0s;">
+            <div class="service-icon">🧠</div>
+            <img src="./index_files/1.jpg" alt="ריפוי בעיסוק" class="service-image" width="250" height="150">
+            <h3>ריפוי בעיסוק</h3>
+            <div id="ot" class="service-details" style="max-height: 128px;">
+                ריפוי בעיסוק מתמקד בשיפור היכולות המוטוריות, הקוגניטיביות והחברתיות של הילד. המטפלים שלנו עובדים על פיתוח מיומנויות יומיומיות, שיפור הקואורדינציה, וחיזוק הביטחון העצמי.
             </div>
         </div>
 
-        <!-- Speech Therapy -->
-        <div class="service-card">
-            <img src="./index_files/2.jpg" alt="קלינאות תקשורת" class="service-image">
-            <div class="service-content">
-                <h3 class="lang-he">קלינאות תקשורת</h3>
-                <h3 class="lang-en">Speech Therapy</h3>
-                <p class="lang-he">
-                    קלינאות התקשורת בתרגולית מתמקדת בשיפור יכולות השפה, הדיבור והתקשורת של הילד. הטיפול שלנו מותאם אישית לצרכיו הייחודיים של כל ילד, ומשלב טכניקות מתקדמות עם משחקים ופעילויות מהנות. אנו עובדים על שיפור ההגייה, העשרת אוצר המילים, הבנת שפה ומיומנויות תקשורת חברתית, תוך שימת דגש על בניית ביטחון בתקשורת.
-                </p>
-                <p class="lang-en">
-                    Speech therapy at Tirguleet focuses on improving the child's language, speech, and communication abilities. Our treatment is tailored to each child's unique needs, combining advanced techniques with fun games and activities. We work on improving pronunciation, enriching vocabulary, language comprehension, and social communication skills, while emphasizing the development of confidence in communication.
-                </p>
+        <div class="service-box" onclick="toggleDetails(&#39;st&#39;)" style="opacity: 1; transform: translateY(0px); transition: opacity 1s ease 0s, transform 1s ease 0s;">
+            <div class="service-icon">🗣️</div>
+            <img src="./index_files/2.jpg" alt="קלינאות תקשורת" class="service-image" width="250" height="150">
+            <h3>קלינאות תקשורת</h3>
+            <div id="st" class="service-details" style="">
+                קלינאות תקשורת מסייעת לילדים עם קשיי שפה, דיבור ותקשורת. הטיפולים שלנו כוללים תרגילי היגוי, העשרת אוצר מילים, ופיתוח כישורי תקשורת חברתית.
             </div>
         </div>
 
-        <!-- Therapeutic Sports -->
-        <div class="service-card">
-            <img src="./index_files/4.jpg" alt="ספורט טיפולי" class="service-image">
-            <div class="service-content">
-                <h3 class="lang-he">ספורט טיפולי</h3>
-                <h3 class="lang-en">Therapeutic Sports</h3>
-                <p class="lang-he">
-                    הספורט הטיפולי בתרגולית משלב פעילות גופנית עם עקרונות טיפוליים, במטרה לשפר את הבריאות הגופנית והנפשית של הילד. התוכנית שלנו מותאמת אישית ליכולות ולצרכים של כל ילד, ומשלבת מגוון פעילויות ספורטיביות מהנות. אנו מתמקדים בשיפור הקואורדינציה, שיווי המשקל, הכוח והסיבולת, תוך חיזוק הביטחון העצמי והמסוגלות החברתית.
-                </p>
-                <p class="lang-en">
-                    Therapeutic sports at Tirguleet combines physical activity with therapeutic principles to improve the child's physical and mental health. Our program is tailored to each child's abilities and needs, incorporating a variety of enjoyable sports activities. We focus on improving coordination, balance, strength, and endurance, while boosting self-confidence and social competence.
-                </p>
+        <div class="service-box" onclick="toggleDetails(&#39;montessori&#39;)" style="opacity: 1; transform: translateY(0px); transition: opacity 1s ease 0s, transform 1s ease 0s;">
+            <div class="service-icon">📚</div>
+            <img src="./index_files/3.jpg" alt="שיטה מונטסורית" class="service-image" width="250" height="150">
+            <h3>הוראה מתקנת בשיטה המונטסורית</h3>
+            <div id="montessori" class="service-details" style="">
+                השיטה המונטסורית מתמקדת בפיתוח עצמאות, יצירתיות וחשיבה ביקורתית. אנו מיישמים את עקרונות השיטה בהוראה מתקנת, תוך התאמה אישית לקשיי הלמידה של כל ילד.
             </div>
         </div>
 
-        <!-- Animal Therapy -->
-        <div class="service-card">
-            <img src="./index_files/5.jpg" alt="תרפיה בחיות" class="service-image">
-            <div class="service-content">
-                <h3 class="lang-he">תרפיה בחיות</h3>
-                <h3 class="lang-en">Animal Therapy</h3>
-                <p class="lang-he">
-                    התרפיה בחיות בתרגולית מציעה גישה ייחודית לטיפול, המשתמשת באינטראקציה עם בעלי חיים כדי לקדם את ההתפתחות הרגשית והחברתית של הילד. הטיפול שלנו מתבצע בסביבה בטוחה ומבוקרת, עם מגוון בעלי חיים מאומנים. אנו מתמקדים בפיתוח אמפתיה, שיפור מיומנויות תקשורת, הפחתת חרדה וחיזוק הביטחון העצמי, תוך יצירת חוויות חיוביות ומעצימות עם בעלי החיים.
-                </p>
-                <p class="lang-en">
-                    Animal therapy at Tirguleet offers a unique approach to treatment, using interaction with animals to promote the child's emotional and social development. Our therapy is conducted in a safe and controlled environment with a variety of trained animals. We focus on developing empathy, improving communication skills, reducing anxiety, and boosting self-confidence, while creating positive and empowering experiences with animals.
-                </p>
+        <div class="service-box" onclick="toggleDetails(&#39;sports&#39;)" style="opacity: 1; transform: translateY(0px); transition: opacity 1s ease 0s, transform 1s ease 0s;">
+            <div class="service-icon">🏃</div>
+            <img src="./index_files/4.jpg" alt="ספורט טיפולי" class="service-image" width="250" height="150">
+            <h3>ספורט טיפולי</h3>
+            <div id="sports" class="service-details" style="max-height: 102px;">
+                ספורט טיפולי משלב פעילות גופנית עם מטרות טיפוליות. אנו מציעים מגוון פעילויות המותאמות לצרכי הילד, כגון משחקי כדור, תרגילי שיווי משקל ופעילויות קבוצתיות.
             </div>
         </div>
-    </section>
-        </se>
 
-        <section class="contact-form">
-            <h2 class="lang-he">לפרטים נוספים וקבלת טופס הרשמה</h2>
-            <h2 class="lang-en">For More Details and Registration Form</h2>
-            <form id="contact-form" action="https://formsubmit.co/m.tirgulit@gmail.com" method="POST">
-                <input type="text" name="name" required="" placeholder="שם / Name">
-                <input type="email" name="email" required="" placeholder="אימייל / Email">
-                <input type="tel" name="phone" required="" placeholder="טלפון / Phone">
-                <button type="submit">
-                    <span class="lang-he">שלח</span>
-                    <span class="lang-en">Send</span>
-                </button>
-            </form>
-        </section>
-
-        <section class="faq">
-            
-            
-            
-            <section class="faq">
-        <h2 class="lang-he">שאלות נפוצות</h2>
-        <h2 class="lang-en">Frequently Asked Questions</h2>
-        
-        <!-- Existing FAQ item -->
-        <div class="faq-item">
-            <div class="faq-question">
-                <span class="lang-he">למי מיועד המרכז?</span>
-                <span class="lang-en">Who is the center for?</span>
-            </div>
-            <div class="faq-answer">
-                <span class="lang-he">המרכז מיועד לילדים שטופלו או מטופלים באחד המקצועות הפרא רפואיים וצריכים תרגול נוסף, או להורים המעוניינים לחזק אצל ילדיהם את תחומי ההתמחות של המכון.</span>
-                <span class="lang-en">The center is designed for children who have been or are being treated in one of the paramedical professions and need additional practice, or for parents who want to strengthen their children in the institute's areas of expertise.</span>
+        <div class="service-box" onclick="toggleDetails(&#39;animal&#39;)" style="opacity: 1; transform: translateY(0px); transition: opacity 1s ease 0s, transform 1s ease 0s;">
+            <div class="service-icon">🐾</div>
+            <img src="./index_files/5.jpg" alt="תרפיה באמצעות בעלי חיים" class="service-image" width="250" height="150">
+            <h3>תרפיה באמצעות בעלי חיים</h3>
+            <div id="animal" class="service-details" style="">
+                תרפיה באמצעות בעלי חיים היא שיטת טיפול ייחודית המשתמשת באינטראקציה עם בעלי חיים לקידום בריאות נפשית ופיזית. הטיפול מסייע בפיתוח אמפתיה, ביטחון עצמי, ומיומנויות תקשורת, תוך יצירת סביבה מרגיעה ותומכת.
             </div>
         </div>
-        
-        <!-- New FAQ item 1 -->
-        <div class="faq-item">
-            <div class="faq-question">
-                <span class="lang-he">כיצד מתבצע תהליך ההרשמה והאבחון הראשוני?</span>
-                <span class="lang-en">How does the registration and initial assessment process work?</span>
-            </div>
-            <div class="faq-answer">
-                <span class="lang-he">תהליך ההרשמה מתחיל בפנייה ראשונית דרך טופס יצירת הקשר באתר או בשיחת טלפון. לאחר מכן, נקבעת פגישת אבחון ראשונית עם אחד המומחים שלנו. במהלך הפגישה, נעריך את צרכי הילד ונבנה תוכנית טיפול מותאמת אישית. ההורים מקבלים הסבר מפורט על התוכנית המוצעת ומשתתפים בקביעת היעדים הטיפוליים.</span>
-                <span class="lang-en">The registration process begins with an initial inquiry through the contact form on the website or by phone. Then, an initial assessment meeting is scheduled with one of our experts. During the meeting, we assess the child's needs and develop a personalized treatment plan. Parents receive a detailed explanation of the proposed program and participate in setting therapeutic goals.</span>
-            </div>
-        </div>
-        
-        <!-- New FAQ item 2 -->
-        <div class="faq-item __web-inspector-hide-shortcut__">
-            <div class="faq-question">
-                <span class="lang-he">האם הטיפולים מכוסים על ידי קופות החולים או ביטוחים פרטיים?</span>
-                <span class="lang-en">Are treatments covered by health insurance or private insurance?</span>
-            </div>
-            <div class="faq-answer">
-                <span class="lang-he">חלק מהטיפולים שלנו עשויים להיות מכוסים על ידי קופות החולים או ביטוחים פרטיים, בהתאם לתנאי הפוליסה האישית. אנו ממליצים לבדוק את הזכאות מול קופת החולים או חברת הביטוח שלכם. צוות המשרד שלנו ישמח לסייע בהגשת המסמכים הנדרשים לקבלת ההחזרים, במידה וקיימת זכאות.</span>
-                <span class="lang-en">Some of our treatments may be covered by health insurance or private insurance, depending on the terms of the individual policy. We recommend checking eligibility with your health fund or insurance company. Our office staff will be happy to assist in submitting the necessary documents for reimbursement, if eligibility exists.</span>
-            </div>
-        </div>
-    </section>
-        </section>
     </div>
 
-    <div class="shape" id="shape1" style="transform: translate3d(63.535px, 38.121px, 0px) rotate(79.4417deg) scale(0.99999, 0.99999);"></div>
-    <div class="shape" id="shape2" style="transform: translate3d(-161.126px, -115.09px, 0px) rotate(-340.308deg);"></div>
+    <div class="parallax-section">
+        <div class="parallax-bubbles">
+            <div class="bubble" style="width: 50px; height: 50px; left: 10%; top: 20%; transform: translate(22.4616px, 14.4388px) rotate(56.4043deg); transition: transform 10s ease-in-out 0s;"></div>
+            <div class="bubble" style="width: 30px; height: 30px; left: 20%; top: 40%; transform: translate(-18.3645px, 33.2218px) rotate(210.664deg); transition: transform 10s ease-in-out 0s;"></div>
+            <div class="bubble" style="width: 70px; height: 70px; left: 35%; top: 70%; transform: translate(-24.6567px, 49.0251px) rotate(343.69deg); transition: transform 10s ease-in-out 0s;"></div>
+            <div class="bubble" style="width: 40px; height: 40px; left: 50%; top: 30%; transform: translate(42.9752px, -46.4415px) rotate(145.362deg); transition: transform 10s ease-in-out 0s;"></div>
+            <div class="bubble" style="width: 60px; height: 60px; left: 65%; top: 60%; transform: translate(-25.1124px, 16.6407px) rotate(270.006deg); transition: transform 10s ease-in-out 0s;"></div>
+            <div class="bubble" style="width: 45px; height: 45px; left: 80%; top: 20%; transform: translate(6.55829px, -25.0534px) rotate(290.601deg); transition: transform 10s ease-in-out 0s;"></div>
+        </div>
+        <div class="parallax-content">
+            <h2>למה לבחור בתרגולית?</h2>
+            <p>צוות מקצועי • קבוצות קטנות • 16 מפגשים ממוקדים • קבוצות נפרדות • מחירים הוגנים</p>
+        </div>
+    </div>
 
-    <script>
-        gsap.to("#shape1", {duration: 10, x: "+=50", y: "+=30", rotation: 360, repeat: -1, yoyo: true, ease: "none"});
-        gsap.to("#shape2", {duration: 15, x: "-=70", y: "-=50", rotation: -360, repeat: -1, yoyo: true, ease: "none"});
+    <h2>איך זה עובד?</h2>
 
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', () => {
-                question.parentElement.classList.toggle('active');
-            });
-        });
+    <ol>
+        <li>שליחת שאלון הכרות עם הילד</li>
+        <li>הערכה על ידי צוות מקצועי</li>
+        <li>פגישת אינטייק</li>
+        <li>כתיבת דוח סיכום עם מטרות</li>
+        <li>שיבוץ לקבוצה המתאימה</li>
+    </ol>
 
-        function toggleLanguage() {
-            document.body.classList.toggle('lang-en');
-            document.documentElement.lang = document.body.classList.contains('lang-en') ? 'en' : 'he';
-            document.documentElement.dir = document.body.classList.contains('lang-en') ? 'ltr' : 'rtl';
-        }
-    </script>
+    <p>תרגולית ממוקמת במרכז ירושלים, במרחב זמין ונגיש. אנו מזמינים אתכם לתת לילדכם את ההזדמנות לפתח מיומנויות חשובות בסביבה תומכת ומקצועית.</p>
 
+    <div style="text-align: center;">
+        <a href="https://docs.google.com/forms/d/1pNIFnkAkI_Ki3oEwxWVEfuk45oMy1isp96q0X60DfEA/edit?usp=drivesdk" class="cta-button" style="opacity: 1; transform: scale(1); transition: opacity 1s ease 0s, transform 1s ease 0s;">למילוי טופס הרשמה ופרטים נוספים</a>
+    </div>
+
+    <p style="text-align: center;"><strong>הזדרזו להירשם! מספר המקומות בקבוצות מוגבל.</strong></p>
+
+    <div class="faq-section">
+        <h2>שאלות נפוצות</h2>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">מה משך כל מפגש טיפולי?</div>
+            <div class="faq-answer">כל מפגש טיפולי נמשך כ-45 דקות. אנו מאמינים שזהו הזמן האופטימלי לעבודה אפקטיבית עם ילדים, תוך שמירה על הריכוז והמוטיבציה שלהם.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">האם ההורים מעורבים בתהליך הטיפולי?</div>
+            <div class="faq-answer">כן, אנו מעודדים מעורבות הורית. נקיים פגישות עדכון תקופתיות ונספק כלים להמשך תרגול בבית. שיתוף הפעולה בין הצוות המקצועי וההורים הוא מפתח להצלחה.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">האם יש אפשרות לשלב בין סוגי טיפולים שונים?</div>
+            <div class="faq-answer">בהחלט! אנו מאמינים בגישה הוליסטית ומציעים תוכניות משולבות המותאמות לצרכי כל ילד. הצוות המקצועי שלנו יבנה תוכנית אישית המשלבת את הטיפולים המתאימים ביותר.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFAQ(this)">מהי תדירות הטיפולים המומלצת?</div>
+            <div class="faq-answer">התדירות המומלצת היא פעם עד פעמיים בשבוע, תלוי בצרכי הילד ובסוג הטיפול. אנו נתאים את התוכנית בהתאם להתקדמות ולמטרות שנקבעו.</div>
+        </div>
+    </div>
+</div>
+
+<script>
+function toggleDetails(id) {
+    var details = document.getElementById(id);
+    if (details.style.maxHeight) {
+        details.style.maxHeight = null;
+    } else {
+        details.style.maxHeight = details.scrollHeight + "px";
+    }
+}
+
+function toggleFAQ(element) {
+    var answer = element.nextElementSibling;
+    if (answer.style.display === "block") {
+        answer.style.display = "none";
+    } else {
+        answer.style.display = "block";
+    }
+}
+
+// Simulating GSAP animations without the library
+document.addEventListener('DOMContentLoaded', (event) => {
+    // Intro animation
+    const introText = document.querySelector('.intro-text');
+    const introAnimation = document.querySelector('.intro-animation');
+    
+    setTimeout(() => {
+        introText.style.opacity = '1';
+        introText.style.transition = 'opacity 1s';
+    }, 500);
+
+    setTimeout(() => {
+        introAnimation.style.opacity = '0';
+        introAnimation.style.transition = 'opacity 1s';
+        setTimeout(() => {
+            introAnimation.style.display = 'none';
+        }, 1000);
+    }, 2500);
+
+    // Service box animations
+    const serviceBoxes = document.querySelectorAll('.service-box');
+    serviceBoxes.forEach((box, index) => {
+        setTimeout(() => {
+            box.style.opacity = '1';
+            box.style.transform = 'translateY(0)';
+            box.style.transition = 'opacity 1s, transform 1s';
+        }, index * 200);
+    });
+
+    // Parallax bubbles animation
+    const bubbles = document.querySelectorAll('.bubble');
+    bubbles.forEach((bubble) => {
+        setInterval(() => {
+            const yMove = Math.random() * 100 - 50;
+            const xMove = Math.random() * 100 - 50;
+            const rotation = Math.random() * 360;
+            bubble.style.transform = `translate(${xMove}px, ${yMove}px) rotate(${rotation}deg)`;
+            bubble.style.transition = 'transform 10s ease-in-out';
+        }, 10000);
+    });
+
+    // CTA button animation
+    const ctaButton = document.querySelector('.cta-button');
+    setTimeout(() => {
+        ctaButton.style.opacity = '1';
+        ctaButton.style.transform = 'scale(1)';
+        ctaButton.style.transition = 'opacity 1s, transform 1s';
+    }, 3000);
+
+    // Background color change animation
+    const body = document.body;
+    const colors = ["#f0f4f8", "#e6f3ff", "#fff5e6", "#e6fff2", "#ffe6e6"];
+    let colorIndex = 0;
+    setInterval(() => {
+        body.style.backgroundColor = colors[colorIndex];
+        body.style.transition = 'background-color 10s';
+        colorIndex = (colorIndex + 1) % colors.length;
+    }, 10000);
+});
+
+// Service box hover effects
+const serviceBoxes = document.querySelectorAll('.service-box');
+serviceBoxes.forEach(box => {
+    box.addEventListener('mouseenter', () => {
+        box.style.transform = 'scale(1.05)';
+        box.style.transition = 'transform 0.3s';
+    });
+    box.addEventListener('mouseleave', () => {
+        box.style.transform = 'scale(1)';
+        box.style.transition = 'transform 0.3s';
+    });
+});
+</script>
 
 </body></html>
