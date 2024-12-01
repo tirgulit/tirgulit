@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>תרגולית - המרכז הרב תחומי לתרגול בירושלים</title>
+    <title>תרגולית - המרכז הרב תחומי לתרגול בירושלים | טיפולים פרא-רפואיים לילדים</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -40,6 +40,9 @@
             position: relative;
             overflow: hidden;
             padding: 120px 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
         }
 
         .hero-section::before {
@@ -59,14 +62,50 @@
             padding: 25px;
             margin: 15px 0;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: none;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card:after {
+            content: 'לחץ להרחבה ↓';
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.9em;
+            color: var(--primary-color);
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
         .service-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            border-color: var(--primary-color);
+            padding-bottom: 45px;
+        }
+
+        .service-card:hover:after {
+            opacity: 1;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1);
+            color: var(--primary-color);
+        }
+
+        .service-card:active {
+            transform: translateY(0);
+        }
+
+        .click-hint {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            font-size: 1.1em;
+            opacity: 0.8;
         }
 
         .service-icon {
@@ -150,16 +189,21 @@
             position: relative;
             overflow: hidden;
             padding: 120px 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
         }
 
         .logo-container {
             position: absolute;
-            top: 100px;
-            left: 10%;
+            top: 20px;
+            left: 50%;
             transform: translateX(-50%);
-            width: 200px;
+            width: 400px;
             z-index: 2;
             animation: logoFloat 3s ease-in-out infinite;
+            opacity: 0;
+            animation: fadeInDown 1s ease forwards;
         }
 
         @keyframes logoFloat {
@@ -168,12 +212,13 @@
         }
 
         .hero-content {
-            margin-left: 25%;
             background: rgba(255, 255, 255, 0.95);
             padding: 40px;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            color: #333;
+            position: relative;
+            z-index: 1;
+            margin-top: 100px;
         }
 
         @keyframes pulse {
@@ -225,7 +270,7 @@
             height: 300px;
         }
 
-        /* אנימציות למספרי השלבים */
+        /* אנימציות למספרי ����������������������������������������������������������שלבים */
         .step-number {
             transition: transform 0.3s;
         }
@@ -305,24 +350,49 @@
             height: 100%;
             overflow: hidden;
             z-index: 1;
+            bottom: 0; /* וודא שהמיכל מתחיל מהתחתית */
         }
 
+        /* עדכון סגנון הבועות */
         .bubble {
             position: absolute;
+            background: url('logo.png') center/contain no-repeat;
             bottom: -100px;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            animation: bubbleRise 15s infinite linear, bubbleFade 15s infinite;
+            animation: bubbleRise 20s infinite linear;
+        }
+
+        /* בועות בשקיפות שונה */
+        .bubble.opaque {
+            opacity: 1;
+            filter: brightness(1);
+            transform: scale(0.8);
+        }
+
+        .bubble.semi-transparent {
+            opacity: 0.6;
+            filter: brightness(1.2);
+            transform: scale(0.6);
+        }
+
+        .bubble.transparent {
+            opacity: 0.3;
+            filter: brightness(1.5);
+            transform: scale(0.4);
         }
 
         @keyframes bubbleRise {
-            0% { transform: translateY(0) scale(1); }
-            100% { transform: translateY(-100vh) scale(0); }
-        }
-
-        @keyframes bubbleFade {
-            0%, 100% { opacity: 0; }
-            50% { opacity: 1; }
+            0% { 
+                transform: translateY(0) scale(1) rotate(0deg); 
+                bottom: -100px;
+            }
+            50% { 
+                bottom: 50%;
+                transform: translateY(0) scale(0.7) rotate(180deg);
+            }
+            100% { 
+                transform: translateY(-100vh) scale(0.4) rotate(360deg); 
+                bottom: 100%;
+            }
         }
 
         /* אפקט נצנוץ */
@@ -451,7 +521,7 @@
             background: var(--soft-color);
         }
 
-        /* עיצוב שלבי התהליך */
+        /* עיצוב שלב התהליך */
         .step-item {
             background: white;
             padding: 25px;
@@ -595,17 +665,324 @@
             font-size: 1.2em;
             font-weight: 500;
         }
+
+        /* תיקונים לתצוגה במובייל */
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 80px 0 40px;
+                min-height: auto;
+            }
+
+            .logo-container {
+                position: relative;
+                top: 0;
+                width: 150px;
+                margin: 0 auto 30px;
+            }
+
+            .hero-content {
+                margin: 0;
+                padding: 25px;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* שיפור תצוגת כרטיסי השירותים במובייל */
+        @media (max-width: 768px) {
+            .service-card {
+                margin: 10px 0;
+                padding: 20px;
+            }
+
+            .service-card:hover {
+                padding-bottom: 40px;
+            }
+
+            .click-hint {
+                font-size: 1em;
+                margin-bottom: 20px;
+            }
+        }
+
+        /* אנימציות בסיסיות לשימוש חוזר */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px) translateX(-50%);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) translateX(-50%);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* קלאסים לאנימציות */
+        .animate {
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.6s ease;
+        }
+
+        .animate.fade-in-up {
+            transform: translateY(30px);
+        }
+
+        .animate.fade-in-right {
+            transform: translateX(-30px);
+        }
+
+        .animate.fade-in-left {
+            transform: translateX(30px);
+        }
+
+        .animate.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(0);
+        }
+
+        /* התאמת גודל הלוגו למובייל */
+        @media (max-width: 768px) {
+            .logo-container {
+                width: 150px;
+                position: relative;
+                margin: 0 auto 30px;
+            }
+        }
+
+        /* עדכון אנימציות לאלמנטים ספציפיים */
+        .hero-content {
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+            animation-delay: 0.5s;
+        }
+
+        .service-card, .step-item, .benefits-list li {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .about-us p {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        /* הוספת סגנון לאזור הסרטון */
+        .video-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 60px 0;
+            margin: 40px 0;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .video-container.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .video-container:empty {
+            display: none;
+        }
+
+        .video-container iframe {
+            width: 100%;
+            aspect-ratio: 16/9;
+            border: none;
+        }
+
+        @media (max-width: 768px) {
+            .logo-container {
+                width: 200px; /* גודל הלוגו ב��ובייל */
+                position: relative;
+                margin: 0 auto 30px;
+            }
+
+            .video-section {
+                padding: 30px 15px;
+            }
+        }
+
+        /* הוספת סגנון למפה ואייקון ווטסאפ */
+        .map-container {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin: 40px 0;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .whatsapp-button {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: #25D366;
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .map-container {
+                height: 300px;
+            }
+        }
+
+        /* הוספת סגנונות לאיורים */
+        .illustration-container {
+            position: relative;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .illustration {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+
+        .illustration:hover {
+            transform: scale(1.05);
+            opacity: 1;
+        }
+
+        .floating-illustration {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* התאמה למובייל */
+        @media (max-width: 768px) {
+            .illustration {
+                width: 150px;
+                height: 150px;
+            }
+        }
+
+        .about-us {
+            background: linear-gradient(135deg, rgba(232, 245, 233, 0.95), rgba(227, 242, 253, 0.95));
+            padding: 60px 0;
+        }
+
+        .about-us h4 {
+            color: var(--primary-color);
+        }
+
+        .about-us p {
+            color: #333;
+            line-height: 1.8;
+        }
+
+        .professional-team-info {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+
+        .professional-team-info p {
+            color: #666;
+            font-size: 0.95em;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .terms-links {
+            font-size: 0.8em;
+        }
+
+        .terms-links a:hover {
+            text-decoration: underline !important;
+        }
     </style>
     <!-- תגיות מטא ל-SEO -->
-    <meta name="description" content="תרגולית היא מרכז רב תחומי לתרגול בירושלים, המציע מיזם חדשני המותאם לצרכים של כל ילד.">
-    <meta name="keywords" content="תרגולית, תרגול, ילדים, מרכז רב תחומי, ירושלים, טיפול פרא-רפואי, קבוצות תרגול">
-    <meta name="author" content="שם המכון או שלך">
+    <meta name="description" content="תרגולית - מרכז מוביל לטיפולים פרא-רפואיים בירושלים: ריפוי בעיסוק, קלינאות תקשורת, הוראה מתקנת, ספורט טיפולי ותרפיה בבעלי חיים. קבוצות קטנות ויחס אישי.">
+    <meta name="keywords" content="תרגולית, תרגול, ילדים, מרכז רב תחומי, ירושלים, טיפול פרא-רפואי, קבוצות תרגול, ריפוי בעיסוק, קלינאות תקשורת, הוראה מתקנת">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="Hebrew">
+    <meta name="revisit-after" content="7 days">
     
-    <!-- תגיות חברתיות -->
-    <meta property="og:title" content="תרגולית - המרכז הרב תחומי לתרגול בירושלים">
-    <meta property="og:description" content="תרגולית היא מרכז רב תחומי לתרגול בירושלים, המציע מיזם חדשני המותאם לצרכים של כל ילד.">
-    <meta property="og:image" content="URL לתמונה המייצגת את האתר">
-    <meta property="og:url" content="URL של האתר">
+    <!-- תגיות נוספות לרשתות חברתיות -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="he_IL">
+    <meta property="og:site_name" content="תרגולית">
+    
+    <!-- Google Search Console Verification -->
+    <meta name="google-site-verification" content="feff694fa1ae5001" />
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -665,10 +1042,10 @@
 
     <section class="hero-section">
         <div class="bubbles-container"></div>
-        <div class="logo-container" style="top: 100px;">
-            <img src="logo.png" alt="תרגולית" class="logo" style="width: 100%;">
-        </div>
         <div class="container">
+            <div class="logo-container">
+                <img src="logo.png" alt="תרגולית" class="logo">
+            </div>
             <div class="hero-content">
                 <h1 class="display-4 mb-4 editable">ברוכים הבאים לתרגולית</h1>
                 <h2 class="h3 mb-4 editable">המרכז הרב תחומי לתרגול בירושלים</h2>
@@ -682,29 +1059,58 @@
         <div class="container">
             <h2 class="text-center mb-4">מי אנחנו</h2>
             <p class="lead text-center">
-                המכון שלנו מציע מיזם חדשני ומתקדם, המשלב מודל ייחודי חדשני המותאם לצרכים של כל ילד. 
-                במסגרת התכנית, הילדים מתרגלים בקבוצות תרגול מיומנויות שונות במגוון תחומים, כאשר הצוות הפרא-רפואי שלנו מתכנן ומנחה את התהליך, 
-                תוך שיתוף פעולה עם המורות המוסמכות.
+                המרכז שלנו מציע מודל חדשני וייחודי המשלב את היתרונות של טיפול מקצועי עם התרגול האינטנסיבי בקבוצה קטנה ותומכת.
+                אנו מאמינים שתרגול בסביבה המדמה את העולם האמיתי הוא המפתח להצלחה!
             </p>
-            <p class="lead text-center">
-                המודל שלנו מאפשר תרגול אינטנסיבי בסביבה המדמה את העולם האמיתי, 
-                מה שמקנה לילדים את הכלים הנדרשים להצלחה בחיי היומיום. 
-                אנו גאים להציע את השירותים שלנו בזמינות גבוהה ובמחיר הוגן, 
-                תוך הקפדה מירבית על מקצועיות ואיכות.
-            </p>
-            <p class="lead text-center">
-                בואו והצטרפו אלינו למסע של צמיחה והתפתחות!
-            </p>
+            
+            <div class="row mt-4">
+                <div class="col-md-4">
+                    <h4 class="text-primary mb-3">תרגול בעולם האמיתי</h4>
+                    <p>
+                        הקבוצות שלנו מאפשרות לילדים לתרגל מיומנויות בסביבה חברתית טבעית ותומכת.
+                        כך הם לומדים להתמודד עם אתגרים יומיומיים בסביבה בטוחה ותומכת.
+                    </p>
+                </div>
+                
+                <div class="col-md-4">
+                    <h4 class="text-primary mb-3">מוטיבציה מוגברת</h4>
+                    <p>
+                        הדינמיקה הקבוצתית יוצרת מוטיבציה טבעית לתרגול והתקדמות.
+                        הילדים נהנים לתרגל יחד, לומדים זה מזה ומעודדים זה את זה להצלחה.
+                    </p>
+                </div>
+                
+                <div class="col-md-4">
+                    <h4 class="text-primary mb-3">זמינות ואינטנסיביות</h4>
+                    <p>
+                        המודל שלנו מאפשר תרגול אינטנסיבי ועקבי בזמינות גבוהה ובמחיר משתלם.
+                        16 מפגשים ממוקדים שאפשרים התקדמות משמעותית בזמן קצר.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="video-section">
+        <div class="container">
+            <h2 class="text-center mb-4 animate fade-in-up">צפו בסרטון ההיכרות שלנו</h2>
+            <div class="video-container animate fade-in-up">
+                <!-- כאן יוכנס הסרטון. אם אין סרטון, ה��זור יעלם אוטומטית -->
+            </div>
         </div>
     </section>
 
     <section class="services py-5">
         <div class="container">
             <h2 class="text-center mb-5">השירותים שלנו</h2>
+            <p class="click-hint">
+                <i class="fas fa-hand-pointer ml-2"></i>
+                לחצו על כל שירות לקבלת מידע נוסף
+            </p>
             <div class="row">
                 <div class="col-md-4">
                     <div class="service-card">
-                        <i class="fas fa-brain service-icon"></i>
+                        <i class="fas fa-hands service-icon"></i>
                         <h3>ריפוי בעיסוק</h3>
                         <p>קבוצות תרגול המתמקדות בשיפור היכולות המוטוריות, הקוגניטיביות והחברתיות של הילד.</p>
                     </div>
@@ -734,7 +1140,7 @@
                     <div class="service-card">
                         <i class="fas fa-paw service-icon"></i>
                         <h3>תרפיה בבעלי חיים</h3>
-                        <p>טיפול ייחודי המשלב אינטראקיה עם בעלי חיים לקידום בריאות נפשית ופיזית.</p>
+                        <p>טיפול ייחודי המשלב אינטראקיה עם בעלי חיים לקידום בריאות נפשית ופיית.</p>
                     </div>
                 </div>
             </div>
@@ -744,6 +1150,15 @@
     <section class="steps-section">
         <div class="container">
             <h2 class="text-center mb-5">איך זה עובד?</h2>
+            <div class="professional-team-info mb-4">
+                <p class="text-center">
+                    הליווי המקצועי, האבחונים וקביעת מטרות אישיות מבוצעים על ידי קלינאית תקשורת ומרפאה בעיסוק מוסמכות,
+                    אשר מבצעות מעקב שוטף אחר התקדמות הילדים. התרגול השוטף בקבוצות ריפוי בעיסוק וקלינאות תקשורת 
+                    מועבר על ידי מורות מוסמכות ומנוסות, תחת הנחיה והדרכה מקצועית צמודה.
+                    קבוצות התרגול בתרפיה בבעלי חיים, ספורט טיפולי והוראה מתקנת מונטסורית 
+                    מועברות על ידי צוות מקצועי מוסמך בתחומים אלו.
+                </p>
+            </div>
             <div class="row">
                 <div class="col-md-3">
                     <div class="step-item">
@@ -806,10 +1221,42 @@
         </div>
     </section>
 
+    <!-- הוספת המפה לפני הפוטר -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">איך מגיעים אלינו?</h2>
+            <div class="map-container animate fade-in-up">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3392.0876836288963!2d35.21120511544383!3d31.775999981283307!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1502d7d634c1fc4b%3A0xd96f623e456944e6!2z16jXl9eV15Eg15fXoNeUIDIzLCDXmdeo15XXqdec15nXnQ!5e0!3m2!1siw!2sil!4v1678901234567!5m2!1siw!2sil"
+                    width="100%"
+                    height="100%"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- כפתור ווטסאפ -->
+    <a href="https://wa.me/972583205022" target="_blank" class="whatsapp-button" title="צור קשר בווטסאפ">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
     <footer class="text-center py-4">
         <div class="container">
-            <p style="font-weight: bold;">הכתובת של המכון: רחוב חנה 23, ירושלים</p>
-            <p style="font-weight: bold;">מייל: m.tirgulit@gmail.com</p>
+            <p style="font-weight: bold;">הכתובת שלנו: רחוב חנה 23, ירושלים</p>
+            <p style="font-weight: bold;">
+                <i class="far fa-envelope"></i> מייל: m.tirgulit@gmail.com
+                <br>
+                <i class="fab fa-whatsapp"></i> ווטסאפ: 058-320-5022
+            </p>
+            <div class="terms-links mt-3">
+                <small>
+                    <a href="ios.pdf" class="text-muted text-decoration-none">תנאים כלליים</a>
+                </small>
+            </div>
         </div>
     </footer>
 
@@ -831,12 +1278,12 @@
         const serviceDetails = {
             'ריפוי בעיסוק': `
                 <h4>ריפוי בעיסוק - הדרך להתפתחות מיטבית</h4>
-                <p>ריפוי בעיוק הוא תחם טיפולי מקיף המתמקד בפיתוח ושיפור מיומנויות יומיומיות חיוניות של ילדכם. הטיפול מתבסס על הבנה שדרך משחק ופעילות מובנית, ילדים לומדים מתפתחים בצורה הטובה ביותר.</p>
+                <p>ריפוי בעיוק הוא תחום טיפולי מקיף המתמקד בפיתוח ושיפור מיומנויות יומיומיות חיוניות של ילדכם. הטיפול מתבסס ע�� הבנה שדרך משחק ופעילות מובנית, ילדים לומדים מתפתחים בצורה הטובה ביותר.</p>
                 
                 <h5>במה אנחנו מתמקדים?</h5>
                 <ul>
                     <li><strong>מוטוריקה עדינה:</strong> כתיבה, גזירה, שרוכים, רכיסת כפתורים</li>
-                    <li><strong>מוטוריקה גסה:</strong> קואורדינציה, שיווי משקל, תכנון תנועתי</li>
+                    <li><strong>מוטוריקה גסה:</strong> קואורדינציה, שי��וי משקל, תכנון תנועתי</li>
                     <li><strong>ויסות חושי:</strong> התמודדות עם גירויים סביבתיים, מגע, תנועה וצלילים</li>
                     <li><strong>ארגון וקשב:</strong> תכנון משימות, סדר וארגון, ריכוז</li>
                     <li><strong>כישורים חברתיים:</strong> משחק משותף, הבנת מצבים חברתיים</li>
@@ -845,21 +1292,21 @@
                 <h5>איך זה עובד בתרגולית?</h5>
                 <p>בקבוצות הקטנות שלנו (עד 4 ילדים), כל ילד מקבל תשומת לב אישית תוך כדי למידה מחבריו לקבוצה. אנו משלבים משחקים טיפוליים, פעילויות יצירה, ותרגילים מובנים בסביב תומכת ומהנה.</p>
 
-                <h5>למי זה מתאים?</h5>
+                <h5>למי זה מתים?</h5>
                 <p>הטיפול מיועד לילדים המתמודדים עם:</p>
                 <ul>
-                    <li>קשיים בכתיה או בפעילויות מוטוריות עדינות</li>
+                    <li>קשי��ם בכתיהה או בפעילויות מוטוריות עדינות</li>
                     <li>חוסר מיומנות בפעילויות יומיומיות</li>
                     <li>קשיי קואורדינציה ותכנון תנועתי</li>
-                    <li>רגישות יתר או ת-רגישות חושית</li>
+                    <li>רגישות יתר או תת-רגישות חושית</li>
                     <li>קשיי ארגון וריכוז</li>
                 </ul>
             `,
             'קלינאות תקשורת': `
                 <h4>קלינאות תקשורת - מפתח להצלחה חברתית ולימודית</h4>
-                <p>קלינאות תקשורת היא מפתח חיוני בהתפתחות השפה, הדיבור והתקשורת של ילדכם. בתרגולית, אנו מאמינים שתקשורת טובה היא הבסיס להצלחה חברתית ולימודית.</p>
+                <p>קלינאות תקשורת היא מפתח חיוני להתפתחות השפה, הדיבור והתקשורת של ילדכם. בתרגולית, אנו מאמינים שתקשורת טובה היא הבסיס להצלחה חברתית ולימודית.</p>
 
-                <h5>תחומי הטיול שלנו:</h5>
+                <h5>תחומי הטיפול שלנו:</h5>
                 <ul>
                     <li><strong>שפה ודיבור:</strong> העשרת אוצר מילים, דקדוק, הגייה נכונה</li>
                     <li><strong>תקשורת חברתית:</strong> שיחה, הבנת רמזים חברתיים, שפת גוף</li>
@@ -877,6 +1324,9 @@
                     <li>קשיים חברתיים או בניהול שיחה</li>
                     <li>אוצר מילים מצומצם ביחס לגיל</li>
                 </ul>
+
+                <h5>איך זה עובד בתרגולית?</h5>
+                <p>בקבוצות הקטנות שלנו (עד 4 ילדים), כל ילד מקבל תשומת לב אישית תוך כדי למידה מחבריו לקבוצה. אנו משלבים משחקים טיפוליים, פעילויות יצירה, ותרגילים מובנים בסביבה תומכת ומהנה.</p>
             `,
             'הוראה מתקנת מונטסורית': `
                 <h4>הוראה מתקנת בשיטת מונטסורי - למידה מותאמת אישית</h4>
@@ -908,8 +1358,8 @@
                 <ul>
                     <li><strong>פיתוח מוטורי:</strong> שיפור קואורדינציה, שיווי משקל וכוח</li>
                     <li><strong>העצמה אישית:</strong> בניית ביטחון עצמי ודימוי גוף חיובי</li>
-                    <li><strong>כישורים חברתיים:</strong> עבודת צוות ושיתוף פעולה</li>
-                    <li><strong>ויסות רגשי:</strong> שליטה בכעסים ותסכולים</li>
+                    <li><strong>כישור��ם חברתיים:</strong> עבודת צוות ושיתוף פעולה</li>
+                    <li><strong>ויסות רגשי:</strong> שליטה בכעסים ותכולים</li>
                 </ul>
 
                 <h5>מבנה הפעילות:</h5>
@@ -918,17 +1368,17 @@
                     <li>חימום מובנה ומשחקי תנועה</li>
                     <li>תרגילים ממוקדי מטרה</li>
                     <li>משחקי קבוצה מותאמים</li>
-                    <li>פעילויות להרגעה וסיכום</li>
+                    <li>פעילויות להרגעה וסי��ום</li>
                 </ul>
             `,
             'תרפיה בבעלי חיים': `
                 <h4>תרפיה בבעלי חיים - קשר מיוחד שמחולל פלאים</h4>
-                <p>הטיפול באמצעות בעלי חיים מאפשר יצירת קשר ייחודי ומרפא. הנוכות המרגיעה של בעלי החיים מסייעת בפיתוח אמפתיה, ביטחון עצמי ומיומנויות חברתיות.</p>
+                <p>הטיפול באמצעות בעלי חיים מאפשר יצירת קשר ייחודי ומרפא. הנוכות המרגיעה של בעלי החיים מסייעת בפיתוח אמפתיה, ביחון עצמי ומיומנויות חברתיות.</p>
 
                 <h5>היתרונות הטיפוליים:</h5>
                 <ul>
-                    <li><strong>רגשי:</strong> הפחתת חרדה, העלאת ביטחון עצמי</li>
-                    <li><strong>חברתי:</strong> פיתוח אמפתיה ותקשורת</li>
+                    <li><strong>רגשי:</strong> הפחתת ����רדה, העלאת ביטחון עצמי</li>
+                    <li><strong>חברתי:</strong> פיתוח ��מפתיה ותקשורת</li>
                     <li><strong>פיזי:</strong> שיפור מוטוריקה ותנועתיות</li>
                     <li><strong>קוגניטיבי:</strong> שיפור ריכוז וקשב</li>
                 </ul>
@@ -937,12 +1387,12 @@
                 <p>במפגשים הטיפולים, הילדים:</p>
                 <ul>
                     <li>לומדים לטפל ולדאוג לבעלי החיים</li>
-                    <li>משתתפים בפעילויות מובנות עם בעלי החיים</li>
+                    <li>משת��פים בפעילויות מובנות עם בעלי החיים</li>
                     <li>מפתחים אחריות ומחויבות</li>
                     <li>חווים הצלחות והעצמה אישית</li>
                 </ul>
 
-                <h5>למי זה מתאים?</h5>
+                <h5>למ�� זה מתאים?</h5>
                 <p>הטיפול מתאים במיוחד לילדים המתמודדים עם:</p>
                 <ul>
                     <li>קשיים חברתיים ורגשיים</li>
@@ -962,7 +1412,14 @@
                     return;
                 }
                 
-                const modal = new bootstrap.Modal(modalElement);
+                let modal = bootstrap.Modal.getInstance(modalElement);
+                if (!modal) {
+                    modal = new bootstrap.Modal(modalElement, {
+                        keyboard: true,
+                        backdrop: true
+                    });
+                }
+                
                 const modalTitle = document.querySelector('#serviceModal .modal-title');
                 const modalBody = document.querySelector('#serviceModal .modal-body');
                 
@@ -970,15 +1427,47 @@
                     console.error('Modal elements not found');
                     return;
                 }
+
+                // התאמה מדויקת יותר
+                let serviceKey = title.trim();
+                
+                if (!serviceDetails[serviceKey]) {
+                    serviceKey = Object.keys(serviceDetails).find(key => 
+                        title.includes(key) || key.includes(title)
+                    );
+                }
+                
+                if (!serviceKey) {
+                    console.error('Service not found:', title);
+                    modalBody.innerHTML = 'מידע יתווסף בקרוב';
+                    return;
+                }
                 
                 modalTitle.textContent = title;
-                modalBody.innerHTML = serviceDetails[title] || 'מידע יתווסף בקרוב';
+                modalBody.innerHTML = serviceDetails[serviceKey];
                 
                 modal.show();
+                
+                // הוספת מאזין לסגירת המודל
+                modalElement.addEventListener('hidden.bs.modal', () => {
+                    document.body.classList.remove('modal-open');
+                    const backdrop = document.querySelector('.modal-backdrop');
+                    if (backdrop) backdrop.remove();
+                });
             } catch (error) {
                 console.error('Error showing service details:', error);
             }
         }
+
+        // הוספת מאזיני לחיצה לכרטיסי השירותים
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.service-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    const title = card.querySelector('h3')?.textContent?.trim() || '';
+                    showServiceDetails(title);
+                });
+            });
+        });
 
         // עדכון פונקציית שמירת השינויים
         function saveChanges() {
@@ -1024,7 +1513,7 @@
                 // הוספת מאזיני לחיצה לכרטיסי השירותים
                 document.querySelectorAll('.service-card').forEach(card => {
                     card.addEventListener('click', () => {
-                        const title = card.querySelector('h3')?.textContent || '';
+                        const title = card.querySelector('h3')?.textContent?.trim() || '';
                         showServiceDetails(title);
                     });
                 });
@@ -1056,7 +1545,7 @@
 
         // הוספת אפקטים ואינטראקציות
         document.addEventListener('DOMContentLoaded', function() {
-            // הוספת קלאס fade-in לאמנטים
+            // ווספת קלאס fade-in לאמנטים
             document.querySelectorAll('.service-card, .step-item, .benefits-list li').forEach(el => {
                 el.classList.add('fade-in');
             });
@@ -1084,58 +1573,46 @@
 
         function createBubbles() {
             const bubblesContainer = document.querySelector('.bubbles-container');
-            const bubbleCount = 20;
+            const bubbleCount = 12;
 
-            for (let i = 0; i < bubbleCount; i++) {
+            function createBubble() {
                 const bubble = document.createElement('div');
                 bubble.className = 'bubble';
                 
-                // מאפיינים רנדומליים לכל בועה
-                const size = Math.random() * 100 + 50;
+                const opacityType = Math.random();
+                if (opacityType < 0.2) {
+                    bubble.classList.add('opaque'); // 20% אטומות
+                } else if (opacityType < 0.5) {
+                    bubble.classList.add('semi-transparent'); // 30% חצי שקופות
+                } else {
+                    bubble.classList.add('transparent'); // 50% שקופות
+                }
+                
+                const size = Math.random() * 80 + 60; // גודל גדול יותר
                 const left = Math.random() * 100;
-                const duration = Math.random() * 4 + 3;
-                const delay = Math.random() * 2;
+                const duration = Math.random() * 15 + 20; // אנימציה איטית יותר
+                const delay = Math.random() * 10;
                 
                 bubble.style.cssText = `
                     width: ${size}px;
                     height: ${size}px;
                     left: ${left}%;
-                    --duration: ${duration}s;
+                    animation-duration: ${duration}s;
                     animation-delay: ${delay}s;
                 `;
                 
                 bubblesContainer.appendChild(bubble);
                 
-                // הסרת הבועה אחרי האנימציה
                 bubble.addEventListener('animationend', () => {
                     bubble.remove();
-                    createBubble(); // יצירת בועה חדשה
+                    setTimeout(() => createBubble(), Math.random() * 5000);
                 });
             }
-        }
 
-        function createBubble() {
-            const bubblesContainer = document.querySelector('.bubbles-container');
-            const bubble = document.createElement('div');
-            bubble.className = 'bubble';
-            
-            const size = Math.random() * 100 + 50;
-            const left = Math.random() * 100;
-            const duration = Math.random() * 4 + 3;
-            
-            bubble.style.cssText = `
-                width: ${size}px;
-                height: ${size}px;
-                left: ${left}%;
-                --duration: ${duration}s;
-            `;
-            
-            bubblesContainer.appendChild(bubble);
-            
-            bubble.addEventListener('animationend', () => {
-                bubble.remove();
-                createBubble();
-            });
+            // יצירת הבועות הראשוניות
+            for (let i = 0; i < bubbleCount; i++) {
+                setTimeout(() => createBubble(), i * 1000); // יצירה הדרגתית של הבועות
+            }
         }
 
         function createSparkles() {
@@ -1172,8 +1649,95 @@
             createBubbles();
             createSparkles();
         });
+
+        // הוספת קלאסים לאלמנטים
+        function initAnimations() {
+            // בחירת כל האלמנטים שנרצה להנפיש
+            const elements = {
+                '.service-card': 'fade-in-up',
+                '.step-item': 'fade-in-right',
+                '.benefits-list li': 'fade-in-left',
+                '.about-us p': 'fade-in-up',
+                'section h2': 'fade-in-up',
+                '.cta-section': 'fade-in-up',
+                '.video-container': 'fade-in-up' // הוספת אנימציה לאזור הסרטון
+            };
+
+            // הוספת קלאסים לאלמנטים
+            for (let selector in elements) {
+                document.querySelectorAll(selector).forEach((el, index) => {
+                    el.classList.add('animate', elements[selector]);
+                });
+            }
+
+            // פונקציה לבדיקת נראות האלמנטים
+            function checkVisibility() {
+                document.querySelectorAll('.animate').forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementBottom = element.getBoundingClientRect().bottom;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (elementTop < windowHeight * 0.85 && elementBottom > 0) {
+                        element.classList.add('visible');
+                    }
+                });
+            }
+
+            // הפעלת הבדיקה בטעינה ובגלילה
+            window.addEventListener('scroll', checkVisibility, { passive: true });
+            window.addEventListener('resize', checkVisibility, { passive: true });
+            checkVisibility(); // בדיקה ראשונית
+        }
+
+        // הפעלת האנימציות בטעינת הדף
+        document.addEventListener('DOMContentLoaded', initAnimations);
+
+        function initVideoSection() {
+            const videoContainer = document.querySelector('.video-container');
+            const videoUrl = ''; // כאן תכניס את כתובת הסרטון כשיהיה
+
+            if (videoUrl) {
+                // אם יש סרטון, נוסיף אותו
+                const iframe = document.createElement('iframe');
+                iframe.src = videoUrl;
+                iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+                iframe.allowFullscreen = true;
+                videoContainer.appendChild(iframe);
+            } else {
+                // אם אין סרטון, נסתיר את כל הסקציה
+                const videoSection = document.querySelector('.video-section');
+                videoSection.style.display = 'none';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initVideoSection();
+            initAnimations();
+        });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Schema.org markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalBusiness",
+      "name": "תרגולית",
+      "image": "https://tirgulit.github.io/tirgulit/logo.png",
+      "description": "מרכז רב תחומי לתרגול בירושלים, המציע מיזם חדשני המותאם לצרכים של כל ילד",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "רחוב חנה 23",
+        "addressLocality": "ירושלים",
+        "addressCountry": "IL"
+      },
+      "email": "m.tirgulit@gmail.com",
+      "url": "https://tirgulit.github.io/tirgulit",
+      "sameAs": [
+        "URL_TO_FACEBOOK_PAGE",
+        "URL_TO_INSTAGRAM_PAGE"
+      ]
+    }
+    </script>
 </body>
 </html>
 
