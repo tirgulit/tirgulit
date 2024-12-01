@@ -270,7 +270,7 @@
             height: 300px;
         }
 
-        /* אנימציות למספרי ����������������������������������������������������������שלבים */
+        /* אנימציות למספרי ��������������������������������������������������������������שלבים */
         .step-number {
             transition: transform 0.3s;
         }
@@ -968,6 +968,18 @@
         .terms-links a:hover {
             text-decoration: underline !important;
         }
+
+        /* אנימציה לריקוד */
+        .dancing-icon {
+            display: inline-block;
+            animation: dance 1s infinite;
+        }
+
+        @keyframes dance {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
     </style>
     <!-- תגיות מטא ל-SEO -->
     <meta name="description" content="תרגולית - מרכז מוביל לטיפולים פרא-רפואיים בירושלים: ריפוי בעיסוק, קלינאות תקשורת, הוראה מתקנת, ספורט טיפולי ותרפיה בבעלי חיים. קבוצות קטנות ויחס אישי.">
@@ -985,6 +997,40 @@
     <meta name="google-site-verification" content="feff694fa1ae5001" />
 </head>
 <body>
+    <!-- הוספת כפתור בראש הדף -->
+    <button id="startMusicButton" class="btn btn-success" style="position: fixed; top: 20px; left: 20px; z-index: 1000; padding: 10px 20px; font-size: 18px; border-radius: 5px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); transition: background-color 0.3s;">
+        בואו לתרגל איתנו
+    </button>
+    
+    <!-- הוספת אייקון רוקד -->
+    <i class="fas fa-dancer dancing-icon" style="position: fixed; top: 20px; left: 150px; font-size: 50px;"></i>
+
+    <audio id="backgroundMusic" src="mu.mp3" preload="auto" loop></audio>
+    
+    <script>
+        // משתנה למעקב אחרי מצב המוזיקה
+        let isMusicPlaying = false;
+
+        // פונקציה להפעלת או הפסקת המוזיקה
+        function toggleMusic() {
+            const backgroundMusic = document.getElementById('backgroundMusic');
+            if (isMusicPlaying) {
+                backgroundMusic.pause();
+                isMusicPlaying = false;
+                document.getElementById('startMusicButton').innerText = "בואו לתרגל איתנו"; // טקסט הכפתור
+            } else {
+                backgroundMusic.play().catch(error => {
+                    console.log('Failed to play music:', error);
+                });
+                isMusicPlaying = true;
+                document.getElementById('startMusicButton').innerText = "הפסיקו את המוזיקה"; // טקסט הכפתור
+            }
+        }
+
+        // הוספת מאזין לאירוע לחיצה על הכפתור
+        document.getElementById('startMusicButton').addEventListener('click', toggleMusic);
+    </script>
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand" href="#">
@@ -1084,7 +1130,7 @@
                     <h4 class="text-primary mb-3">זמינות ואינטנסיביות</h4>
                     <p>
                         המודל שלנו מאפשר תרגול אינטנסיבי ועקבי בזמינות גבוהה ובמחיר משתלם.
-                        16 מפגשים ממוקדים שאפשרים התקדמות משמעותית בזמן קצר.
+                        16 מפגשים ממוקדים שאפשרים התקדמות משמעותית .
                     </p>
                 </div>
             </div>
@@ -1152,7 +1198,7 @@
             <h2 class="text-center mb-5">איך זה עובד?</h2>
             <div class="professional-team-info mb-4">
                 <p class="text-center">
-                    הליווי המקצועי, האבחונים וקביעת מטרות אישיות מבוצעים על ידי קלינאית תקשורת ומרפאה בעיסוק מוסמכות,
+                    הליווי המקצועי, האבחונים וקביעת מטרות אישיות מבוצעים על ידי צוות מקצועי פרא רפואי בעל נסיון רב ,
                     אשר מבצעות מעקב שוטף אחר התקדמות הילדים. התרגול השוטף בקבוצות ריפוי בעיסוק וקלינאות תקשורת 
                     מועבר על ידי מורות מוסמכות ומנוסות, תחת הנחיה והדרכה מקצועית צמודה.
                     קבוצות התרגול בתרפיה בבעלי חיים, ספורט טיפולי והוראה מתקנת מונטסורית 
